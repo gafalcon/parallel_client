@@ -1,0 +1,18 @@
+{
+    "libs": [
+        "browser",
+        "ecmascript"
+    ],
+    "loadEagerly": [
+        "./src/*.js"
+    ],
+    "plugins": {
+        "es_modules": {},
+        "doc_comment": {
+            "fullDocs": true,
+            "strong": true
+        },
+        "node": {},
+        "requirejs": {}
+    }
+}

@@ -1,0 +1,46 @@
+<div id="newTask" style="margin-top: 20px;">
+    <div class="row">
+        <h2>Upload new task</h2>
+    </div>
+    <div class="row">
+        <div class="col-9">
+            <form method="post">
+                <div class="form-group">
+                    <label for="taskName">Task Name</label>
+                    <input type="text" class="form-control" id="taskName" aria-describedby="taskName" placeholder="Enter name">
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">Pi Calculation</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">MergeSort</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="numExperiments">Number of Experiments</label>
+                    <input type="number" class="form-control" id="numExperiments" aria-describedby="numExperiments" placeholder="Enter a number">
+                </div>
+                <div id="sortFile-group" class="form-group">
+                    <label for="sortFile">File to sort</label>
+                    <input type="file" class="form-control-file" id="sortFile">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Task</button>
+            </form>
+        </div>
+        <div class="col-3">
+            <h4>List of clients</h4>
+            <ul>
+                <li>Client 1</li>
+                <li>Client 2</li>
+                <li>Client 3</li>
+                <li>Client 4</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+<div id="tasks" style="margin-top: 25px;">
+    <app-tasks-list></app-tasks-list>
+</div>
