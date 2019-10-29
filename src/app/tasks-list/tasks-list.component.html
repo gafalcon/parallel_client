@@ -1,35 +1,38 @@
 <div class="row">
-    <h2>Tasks</h2>
-</div>
-<div class="row">
     <div class="col">
         <ul class="list-group">
-            <li class="list-group-item">
+            <li class="list-group-item" *ngFor="let task of tasks">
                 <div class="row">
                     <div class="col">
-                        <b>Name:</b>    MergeSort
+                        <b>Name:</b> {{ task.name }}
                     </div>
                     <div class="col">
-                        <b>Status:</b>Running
+                        <b>Status:</b> {{ task.status }}
+                    </div>
+                    <div class="col">
+                        <b>Operations:</b> {{ task.n_experims }}
+                    </div>
+                    <div class="col" *ngIf="task.status == 'FINISHED'">
+                        <b>Result:</b> {{ 4 * (task.n_success_experims / task.n_experims) }}
                     </div>
                     <div class="col">
                         <a href="">View</a>
                     </div>
                 </div>
             </li>
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col">
-                        <b>Name:</b>    MergeSort
-                    </div>
-                    <div class="col">
-                        <b>Status:</b>Running
-                    </div>
-                    <div class="col">
-                        <a href="">View</a>
-                    </div>
-                </div>
-            </li>
+            <!-- <li class="list-group-item"> -->
+            <!-- <div class="row"> -->
+            <!-- <div class="col"> -->
+            <!-- <b>Name:</b>    MergeSort -->
+            <!-- </div> -->
+            <!-- <div class="col"> -->
+            <!-- <b>Status:</b>Finished -->
+            <!-- </div> -->
+            <!-- <div class="col"> -->
+            <!-- <a href="">View</a> -->
+            <!-- </div> -->
+            <!-- </div> -->
+            <!-- </li> -->
         </ul>
     </div>
 </div>

@@ -4,43 +4,46 @@
     </div>
     <div class="row">
         <div class="col-9">
-            <form method="post">
+            <form method="post" [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="taskName">Task Name</label>
-                    <input type="text" class="form-control" id="taskName" aria-describedby="taskName" placeholder="Enter name">
+                    <input type="text" class="form-control" id="taskName" aria-describedby="taskName" placeholder="Enter name" formControlName="name">
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                    <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="pi" formControlName="type">
                     <label class="form-check-label" for="inlineRadio1">Pi Calculation</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="sort" formControlName="type">
                     <label class="form-check-label" for="inlineRadio2">MergeSort</label>
                 </div>
-
-                <div class="form-group">
+                <br />
+                <div class="form-group" *ngIf="type == 'pi'">
                     <label for="numExperiments">Number of Experiments</label>
-                    <input type="number" class="form-control" id="numExperiments" aria-describedby="numExperiments" placeholder="Enter a number">
+                    <input type="number" class="form-control" id="numExperiments" aria-describedby="numExperiments" placeholder="Enter a number" formControlName="num_experiments">
                 </div>
-                <div id="sortFile-group" class="form-group">
+                <div id="sortFile-group" *ngIf="type == 'sort'" class="form-group">
                     <label for="sortFile">File to sort</label>
-                    <input type="file" class="form-control-file" id="sortFile">
+                    <input #file type="file" class="form-control-file" id="sortFile" (change)="fileSelected(file.files)">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit Task</button>
+                {{ form.value.type }}
             </form>
         </div>
         <div class="col-3">
-            <h4>List of clients</h4>
+            <h4>List of nodes</h4>
             <ul>
-                <li>Client 1</li>
-                <li>Client 2</li>
-                <li>Client 3</li>
-                <li>Client 4</li>
+                <li *ngFor="let node of nodes">{{ node.url }}: {{ node.status }}</li>
             </ul>
         </div>
     </div>
 </div>
 <br />
 <div id="tasks" style="margin-top: 25px;">
-    <app-tasks-list></app-tasks-list>
+    <div class="row">
+        <h2>Tasks</h2>
+    </div>
+    <app-tasks-list [tasks]="runningTasks"></app-tasks-list>
+    <app-tasks-list [tasks]="waitingTasks"></app-tasks-list>
+    <app-tasks-list [tasks]="completedTasks"></app-tasks-list>
 </div>

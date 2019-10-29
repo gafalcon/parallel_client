@@ -1,9 +1,13 @@
 const net = require('net');
 let socketCon;
+let socketConnections = {};
 
 module.exports.openSocketConnection = () => {
     const server = net.createServer((socket) => {
         socketCon = socket;
+        console.log('Client connect. Client local address : ' + socket.localAddress + ':' + socket.localPort + '. client remote address : ' + socket.remoteAddress + ':' + socket.remotePort);
+
+        const socket_id = socket.localAddress+":"+socket.localPort;
         socket.write('Echo server\r\n');
         socket.on('data', (data) => {
             // console.log(data);
@@ -26,5 +30,9 @@ module.exports.openSocketConnection = () => {
 }
 
 module.exports.print = (data) => {
-    socketCon.write(data + "\r\n");
+    if (socketCon)
+        socketCon.write(data + "\r\n");
+    else {
+        console.log("No socket");
+    }
 }
