@@ -8,7 +8,8 @@ import { TasksResponse } from '../models/tasksResponse';
   providedIn: 'root'
 })
 export class ApiService {
-    API_URL = 'http://localhost:7000/api';
+    // API_URL = 'http://localhost:7000/api';
+    API_URL = 'http://ec2-3-19-232-127.us-east-2.compute.amazonaws.com:7000/api';
     constructor(private http: HttpClient) { }
 
     getTasks(): Observable<TasksResponse> {
