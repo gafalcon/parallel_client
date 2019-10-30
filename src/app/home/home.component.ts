@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder} from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { WorkerNode } from '../models/node';
 import { Task } from '../models/task';
+import { TasksResponse } from '../models/tasksResponse';
 
 @Component({
   selector: 'app-home',
@@ -49,6 +50,23 @@ export class HomeComponent implements OnInit {
             this.waitingTasks = tasksResponse.waiting;
 
         });
+
+        this.apiService.getWsConnection().subscribe(
+            (res: any) => {
+                console.log('WS MESSAGE!!', res);
+                if (res.running ) {
+                    this.runningTasks = res.running;
+                    this.completedTasks = res.completed;
+                    this.waitingTasks = res.waiting;
+                } else {
+                    this.nodes = res;
+                }
+
+            },
+            err => console.log('WS Error:', err),
+            () => console.log()
+        );
+
     }
 
 
