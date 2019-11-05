@@ -72,8 +72,19 @@ export class HomeComponent implements OnInit {
 
     onSubmit() {
         console.log(this.form.value);
-        this.apiService.newTask(this.form.value).subscribe((res) => {
-            console.log(res);
-        });
+        if (this.type === 'pi') {
+            this.apiService.newPITask(this.form.value).subscribe((res) => {
+                console.log(res);
+            });
+        } else {
+            const sortData = new FormData();
+            sortData.append('sortfile', this.form.get('sortfile').value);
+            sortData.append('name', this.form.get('name').value);
+            this.apiService.newSortTask(sortData).subscribe((res) => {
+                console.log('Res', res);
+            }, (err) => {
+                console.log('Submit err', err);
+            });
+        }
     }
 }

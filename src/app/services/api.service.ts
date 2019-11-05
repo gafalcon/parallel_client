@@ -33,7 +33,12 @@ export class ApiService {
         return this.subject;
     }
 
-    newTask(data): Observable<Task> {
-        return this.http.post<Task>(`${this.API_URL}/task`, data);
+    newPITask(data): Observable<Task> {
+        return this.http.post<Task>(`${this.API_URL}/pitask`, data);
     }
+
+    newSortTask(data: FormData): Observable<Task> {
+        return this.http.post<Task>(`${this.API_URL}/sorttask`, data);
+    }
+
 }
