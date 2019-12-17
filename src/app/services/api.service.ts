@@ -41,4 +41,8 @@ export class ApiService {
         return this.http.post<Task>(`${this.API_URL}/sorttask`, data);
     }
 
+    getPastTasks(tasktype: string) {
+        return this.http.get(`${this.API_URL}/tasks/${tasktype}/completed`);
+    }
+
 }

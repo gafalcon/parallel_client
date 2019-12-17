@@ -49,12 +49,16 @@
             <app-tasks-list [title]="'Running'" [tasks]="runningPi"></app-tasks-list>
             <app-tasks-list [title]="'Waiting'" [tasks]="waitingPi"></app-tasks-list>
             <app-tasks-list [title]="'Completed'" [tasks]="completedPi"></app-tasks-list>
+            <button class="btn btn-link" (click)="getCompletedTasks('pi')">View past tasks</button>
+            <app-tasks-list [title]="'Past Tasks'" [tasks]="pastPiTasks"></app-tasks-list>
         </div>
         <div class="col">
             <h3>MergeSort Tasks</h3>
             <app-mergesort-task-list [title]="'Running'" [tasks]="runningMs"></app-mergesort-task-list>
             <app-mergesort-task-list [title]="'Waiting'" [tasks]="waitingMs"></app-mergesort-task-list>
             <app-mergesort-task-list [title]="'Completed'" [tasks]="completedMs"></app-mergesort-task-list>
+            <button class="btn btn-link" (click)="getCompletedTasks('mergesort')">View past tasks</button>
+            <app-mergesort-task-list [title]="'Past Tasks'" [tasks]="pastMSTasks"></app-mergesort-task-list>
         </div>
     </div>
     <div class="row">

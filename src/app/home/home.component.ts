@@ -14,15 +14,14 @@ export class HomeComponent implements OnInit {
 
     form: FormGroup;
     nodes: WorkerNode[];
-    runningTasks: Task[];
-    completedTasks: Task[];
-    waitingTasks: Task[];
     runningPi = [];
     completedPi = [];
     waitingPi = [];
     runningMs = [];
     completedMs = [];
     waitingMs = [];
+    pastPiTasks = [];
+    pastMSTasks = [];
 
     constructor(private formBuilder: FormBuilder, private apiService: ApiService) {
         this.form = this.formBuilder.group({
@@ -61,9 +60,6 @@ export class HomeComponent implements OnInit {
         this.apiService.getTasks().subscribe(tasksResponse => {
             console.log(tasksResponse);
             this.filterLists(tasksResponse);
-            this.runningTasks = tasksResponse.running;
-            this.completedTasks = tasksResponse.completed;
-            this.waitingTasks = tasksResponse.waiting;
 
         });
 
@@ -115,6 +111,22 @@ export class HomeComponent implements OnInit {
             }, (err) => {
                 console.log('Submit err', err);
             });
+        }
+    }
+
+    getCompletedTasks(taskType: string) {
+        if (taskType === 'pi') {
+            if (this.pastPiTasks.length === 0) {
+                this.apiService.getPastTasks(taskType).subscribe((res: any) => {
+                    this.pastPiTasks = res;
+                })
+            }
+        } else {
+            if (this.pastMSTasks.length === 0) {
+                this.apiService.getPastTasks(taskType).subscribe((res: any) => {
+                    this.pastMSTasks = res;
+                })
+            }
         }
     }
 }
