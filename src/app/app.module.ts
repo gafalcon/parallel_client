@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { TasksListComponent } from './tasks-list/tasks-list.component';
 import { TaskComponent } from './task/task.component';
+import { MergesortTaskListComponent } from './mergesort-task-list/mergesort-task-list.component';
 
 @NgModule({
   declarations: [
       AppComponent,
       HomeComponent,
       TasksListComponent,
-      TaskComponent
+      TaskComponent,
+      MergesortTaskListComponent
   ],
   imports: [
       BrowserModule,

@@ -29,7 +29,7 @@ export class ApiService {
         return this.http.get<WorkerNode[]>(`${this.API_URL}/nodes`);
     }
 
-    getWsConnection(): WebSocketSubject<TasksResponse | WorkerNode[]> {
+    getWsConnection(): WebSocketSubject<any> {
         return this.subject;
     }
 

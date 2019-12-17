@@ -43,7 +43,20 @@
     <div class="row">
         <h2>Tasks</h2>
     </div>
-    <app-tasks-list [tasks]="runningTasks"></app-tasks-list>
-    <app-tasks-list [tasks]="waitingTasks"></app-tasks-list>
-    <app-tasks-list [tasks]="completedTasks"></app-tasks-list>
+    <div class="row">
+        <div class="col">
+            <h3>PI Tasks</h3>
+            <app-tasks-list [title]="'Running'" [tasks]="runningPi"></app-tasks-list>
+            <app-tasks-list [title]="'Waiting'" [tasks]="waitingPi"></app-tasks-list>
+            <app-tasks-list [title]="'Completed'" [tasks]="completedPi"></app-tasks-list>
+        </div>
+        <div class="col">
+            <h3>MergeSort Tasks</h3>
+            <app-mergesort-task-list [title]="'Running'" [tasks]="runningMs"></app-mergesort-task-list>
+            <app-mergesort-task-list [title]="'Waiting'" [tasks]="waitingMs"></app-mergesort-task-list>
+            <app-mergesort-task-list [title]="'Completed'" [tasks]="completedMs"></app-mergesort-task-list>
+        </div>
+    </div>
+    <div class="row">
+    </div>
 </div>

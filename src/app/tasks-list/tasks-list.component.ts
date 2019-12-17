@@ -9,6 +9,7 @@ import { Task } from '../models/task';
 export class TasksListComponent implements OnInit {
 
     @Input() tasks: Task[];
+    @Input() title: string;
 
     constructor() { }
 

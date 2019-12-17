@@ -1,38 +1,16 @@
-<div class="row">
+<div class="row" *ngIf="tasks.length">
     <div class="col">
-        <ul class="list-group">
-            <li class="list-group-item" *ngFor="let task of tasks">
-                <div class="row">
-                    <div class="col">
-                        <b>Name:</b> {{ task.name }}
-                    </div>
-                    <div class="col">
-                        <b>Status:</b> {{ task.status }}
-                    </div>
-                    <div class="col">
-                        <b>Operations:</b> {{ task.n_experims }}
-                    </div>
-                    <div class="col" *ngIf="task.status == 'FINISHED'">
-                        <b>Result:</b> {{ 4 * (task.n_success_experims / task.n_experims) }}
-                    </div>
-                    <div class="col">
-                        <a href="">View</a>
-                    </div>
-                </div>
-            </li>
-            <!-- <li class="list-group-item"> -->
-            <!-- <div class="row"> -->
-            <!-- <div class="col"> -->
-            <!-- <b>Name:</b>    MergeSort -->
-            <!-- </div> -->
-            <!-- <div class="col"> -->
-            <!-- <b>Status:</b>Finished -->
-            <!-- </div> -->
-            <!-- <div class="col"> -->
-            <!-- <a href="">View</a> -->
-            <!-- </div> -->
-            <!-- </div> -->
-            <!-- </li> -->
-        </ul>
+        <h5 *ngIf="title">{{ title }}</h5>
+        <table class="table table-sm">
+            <tbody>
+                <tr *ngFor="let task of tasks">
+                    <th scope="row">{{ task.name }}</th>
+                    <td>{{ task.n_experims }} ops</td>
+                    <td *ngIf="task.status == 'FINISHED'">
+                        PI: {{ 4 * (task.n_success_experims / task.n_experims) }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

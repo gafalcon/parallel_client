@@ -1,0 +1,17 @@
+<div class="row" *ngIf="tasks.length">
+    <div class="col">
+        <h5 *ngIf="title">{{ title }}</h5>
+        <table class="table table-sm">
+            <tbody>
+                <tr *ngFor="let task of tasks">
+                    <th scope="row">{{ task.name }}</th>
+                    <td>{{ task.task_type }}</td>
+                    <td>{{ task.status }}</td>
+                    <td>{{ task.fileSize }} numbers</td>
+                    <td *ngIf="task.sortedFile"><a href="http://localhost:7000/mergesortfiles/{{ task.sortedFile }}">Result</a></td>
+                    <td *ngIf="task.mergedFile"><a href="http://localhost:7000/mergesortfiles/{{ task.mergedFile }}">Result</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
